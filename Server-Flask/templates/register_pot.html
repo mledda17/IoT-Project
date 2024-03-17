@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{%  block content %}
+
+          <div class="row mt-4">
+        <div class="col-lg-7 mb-lg-0 mb-4">
+          <div class="card z-index-2 h-100 p-3">
+            <div class="card-header pb-0 pt-3 bg-transparent">
+              <h6 class="text-capitalize text-medium">Register a new Pot</h6>
+            </div>
+            <div class="card-body p-4">
+              <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+
+                {% if success %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ success }}
+                    </div>
+                {% endif %}
+
+                {% if error %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ error }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endif %}
+
+                <div class="form-floating mb-3">
+                {{ form.name(class="form-control", placeholder="Pot Name") }}
+                <label for="pot_name">Pot Name</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                {{ form.serial_number(class="form-control", placeholder="Serial number") }}
+                <label for="pot_name">Serial number</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                {{ form.location(class="form-control", placeholder="Location", id="searchAddress") }}
+                <label for="floatingInput">Location (Your Address)</label>
+                <ul id="results_address"></ul>
+                </div>
+
+                <div class="form-floating mb-3">
+                {{ form.plant_name(class="form-control", placeholder="Plant name", id="searchPlant") }}
+                <label for="floatingInput">Plant name</label>
+                <ul id="results_plant"></ul>
+                </div>
+
+                <div class="form-floating mb-3">
+                {{ form.desired_humidity(class="form-control", placeholder="Desired Humidity") }}
+                <label for="floatingInput">Desired Humidity</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="watering_frequency">Desired Watering Frequency</label>
+                    <select class="form-control" id="watering_frequency" name="watering_frequency">
+                        {% for value, label in form.watering_frequency.choices %}
+                        <option value="{{ value }}">{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="d-grid">
+                <button class="btn btn-success" type="submit">Add Pot</button>
+                </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

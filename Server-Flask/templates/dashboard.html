@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{%  block content %}
+
+
+
+      <div class="row mt-4">
+        <div class="col-lg-7 mb-lg-0 mb-4">
+          <div class="card z-index-2 h-100 p-3">
+            <div class="card-header pb-0 pt-3 bg-transparent">
+              <h6 class="text-capitalize text-medium">How to use the Dashboard for Planty</h6>
+            </div>
+            <div class="card-body p-4">
+              <p>
+              Hey {% if current_user.is_authenticated %} {{ current_user.username }}!{% endif %}!
+              <br><br>
+              This is the dashboard where you can monitor your smart pot. From the navigation bar
+              here to the left you can access to the list of your smart pots. You will find
+              a blue button that allows you to register a new smart pot. To register the smart pot
+              you need to give a name to it, choose the location, the plant and the desired parameters.
+              Also, you can modify the parameters later if you change idea and you can unregister smart pots.
+              <br><br>
+              You can see the statistics of the measurements, the log of watering cycles and the ideal parameters
+              suggested by the application.
+              The plant is irrigated based on the weather forecast, thus if rain is expected for a day, the
+              irrigation will be skipped.
+              You can also require a "Terrain Scoring Parameters" which gives you a qualitative score regarding
+              the health state of the plant.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+{% endblock %}

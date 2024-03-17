@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{%  block content %}
+
+
+    <div class="card-header pb-0 pt-3 bg-transparent">
+        <h6 class="text-capitalize text-medium text-white">Your Smart Pots</h6>
+        <a class="btn btn-primary" href="/register_pot">New Smart Pot</a>
+    </div>
+
+    <div class="row mt-4">
+        {% if pots %}
+
+                {% for pot in pots %}
+
+                <div class="card mb-4">
+                    <div class="card-body p-5">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-12">
+                                <div class="numbers">
+                                    <h3 class="font-weight-bolder">
+                                        {{ pot.name }}
+                                    </h3>
+                                    <p class="mb-1">
+                                        <span class="text-success text-sm font-weight-bolder">Location:</span>
+                                        {{ pot.location }}
+                                    </p>
+                                    <p class="mb-1">
+                                        <span class="text-success text-sm font-weight-bolder">Plant name:</span>
+                                        {{ pot.plant_name }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12 text-end grid icons-hub-group">
+                                <a href="/pot_details/{{ pot.u_id }}"><div class="icon icon-shape bg-gradient-success shadow-primary text-center rounded-circle icon-hub-group">
+                                    <i class="fa-solid fa-eye text-lg opacity-10"></i>
+                                </div></a>
+                                <a href="/modify_pot_details/{{ pot.u_id }}"><div class="icon icon-shape bg-gradient-warning shadow-primary text-center rounded-circle icon-hub-group">
+                                    <i class="fa-solid fa-pen text-lg opacity-10"></i>
+                                </div></a>
+                                <a href="/unregister_pot/{{ pot.u_id }}"><div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle icon-hub-group">
+                                    <i class="fa-solid fa-trash text-lg opacity-10"></i>
+                                </div></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+                {% else %}
+                    <p>No smart pots found for this user.</p>
+                {% endif %}
+            </div>
+
+{% endblock %}
